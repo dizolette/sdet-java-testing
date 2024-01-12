@@ -6,7 +6,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverFactory {
-    private static DriverFactory driverFactory = new DriverFactory();
     private static WebDriver driver;
 
     private DriverFactory() {
@@ -14,11 +13,8 @@ public class DriverFactory {
     }
 
     public static WebDriver initializeDriver(WebDriverEnum webDriver){
-        System.setProperty("webdriver.chrome.driver", "D:/DATA DWI/github project/sdet-java-testing/src/main/java/org/example/driver/chromedriver.exe");
-        return getInstance().getDriver(webDriver); //FIXME: still driver null
-    }
+        System.setProperty("webdriver.chrome.driver", "D:/DATA DWI/github project/sdet-java-testing/src/main/java/org/example/driver/chromedriver.exe"); //TODO: update the path from config properties
 
-    private static WebDriver getDriver(WebDriverEnum webDriver) {
         if(driver == null){
 
             switch (webDriver.toString()) {
@@ -35,13 +31,14 @@ public class DriverFactory {
             }
         }
 
-        return null;
+        return driver;
     }
 
-    private static DriverFactory getInstance() {
-        if(driverFactory == null){
-            driverFactory = new DriverFactory();
+    public static WebDriver getDriver() {
+        if(driver == null){
+            driver = initializeDriver(WebDriverEnum.CHROME); // TODO: read default value from config.properties
         }
-        return driverFactory;
+        return driver;
     }
+
 }
