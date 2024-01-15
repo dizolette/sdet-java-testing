@@ -1,6 +1,5 @@
 package org.example.base;
 
-import org.example.enums.WebDriverEnum;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -11,7 +10,7 @@ public class BaseTest {
 
     @BeforeTest
     public WebDriver initDriver() {
-        driver = DriverFactory.initializeDriver(WebDriverEnum.CHROME); // TODO: read default value from config.properties
+        driver = DriverFactory.initializeDriver(ConfigFileReader.getInstance().getProperty("DRIVER"));
         return this.driver;
     }
 
