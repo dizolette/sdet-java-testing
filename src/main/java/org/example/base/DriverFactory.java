@@ -2,7 +2,7 @@ package org.example.base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 
 public class DriverFactory {
     private static WebDriver driver;
@@ -21,9 +21,9 @@ public class DriverFactory {
                     driver = new ChromeDriver();
                     break;
 
-                case "FIREFOX":
-                    System.setProperty("webdriver.chrome.driver", "D:/DATA DWI/github project/sdet-java-testing/src/main/java/org/example/driver/chromedriver.exe");
-                    driver = new FirefoxDriver();
+                case "EDGE":
+                    System.setProperty("webdriver.edge.driver", "D:/DATA DWI/github project/sdet-java-testing/src/main/java/org/example/driver/msedgedriver.exe");
+                    driver = new EdgeDriver();
                     break;
 
                 default:

@@ -1,6 +1,7 @@
 package org.example.web;
 
 import org.example.base.BaseTest;
+import org.example.base.ConfigFileReader;
 import org.example.base.DriverFactory;
 import org.example.stepdefs.LoginSteps;
 import org.openqa.selenium.WebDriver;
@@ -11,11 +12,13 @@ public class LoginTest extends BaseTest {
     WebDriver driver = DriverFactory.getDriver();
 
     @Test
-    public void test() throws InterruptedException {
-        driver.get("https://saucedemo.com"); //TODO: update the url to read from config.properties
+    public void testLogin() throws InterruptedException {
+        ConfigFileReader configFileReader = ConfigFileReader.getInstance();
+
+        driver.get(configFileReader.getProperty("BASE_URL"));
         LoginSteps loginSteps = new LoginSteps();
-        loginSteps.login("standard_user", "secret_sauce");
-        Thread.sleep(5000);
+        loginSteps.login(configFileReader.getProperty("EMAIL"), configFileReader.getProperty("PASSWORD"));
+        Thread.sleep(2000);
     }
 
 }
