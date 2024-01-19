@@ -21,6 +21,6 @@ public class AddToCartTest extends BaseTest {
         inventorySteps.clickCart();
         cartSteps.removeItems(CartPage.btnRemoveItemBackpackId, CartPage.btnRemoveItemBikeLightId);
 
-        Assert.assertTrue(cartSteps.isCartEmpty());
+        Assert.assertFalse(cartSteps.isCartEmpty());
     }
 }

@@ -17,6 +17,6 @@ public class CartSteps extends WebElementHelper {
 
     public boolean isCartEmpty() {
         List<WebElement> elements = findElementsByClassName(CartPage.divRemovedItemClass);
-        return !elements.isEmpty();
+        return elements.isEmpty();
     }
 }
