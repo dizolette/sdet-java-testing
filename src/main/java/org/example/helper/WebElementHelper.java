@@ -19,6 +19,10 @@ public class WebElementHelper {
         return driver.findElement(By.className(className));
     }
 
+    public WebElement findELementByTagName(String tagName) {
+        return driver.findElement(By.tagName(tagName));
+    }
+
     public List<WebElement> findElementsByClassName(String className) {
         return driver.findElements(By.className(className));
     }

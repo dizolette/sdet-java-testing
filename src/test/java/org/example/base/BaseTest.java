@@ -11,6 +11,7 @@ public class BaseTest {
     @BeforeTest
     public WebDriver initDriver() {
         driver = DriverFactory.initializeDriver(ConfigFileReader.getInstance().getProperty("DRIVER"));
+        driver.manage().window().maximize();
         return this.driver;
     }
 
