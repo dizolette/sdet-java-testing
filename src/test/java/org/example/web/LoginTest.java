@@ -5,11 +5,16 @@ import org.example.base.ConfigFileReader;
 import org.example.base.DriverFactory;
 import org.example.stepdefs.LoginSteps;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
+    WebDriver driver;
 
-    WebDriver driver = DriverFactory.getDriver();
+    @BeforeClass
+    public void initialize() {
+        driver = DriverFactory.getDriver();
+    }
 
     @Test
     public void testLogin() throws InterruptedException {
@@ -18,7 +23,6 @@ public class LoginTest extends BaseTest {
         driver.get(configFileReader.getProperty("BASE_URL"));
         LoginSteps loginSteps = new LoginSteps();
         loginSteps.login(configFileReader.getProperty("EMAIL"), configFileReader.getProperty("PASSWORD"));
-        Thread.sleep(2000);
     }
 
 }

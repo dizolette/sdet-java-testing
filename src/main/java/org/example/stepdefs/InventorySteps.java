@@ -16,4 +16,10 @@ public class InventorySteps extends WebElementHelper {
     public void clickCart() {
         findElementById(InventoryPage.btnCartId).click();
     }
+    public void clickBurgerMenu() {
+        findElementById(InventoryPage.btnBurgerMenuId).click();
+    }
+    public void clickAboutSideBar() {
+        findElementById(InventoryPage.btnSidebarAboutId).click();
+    }
 }
