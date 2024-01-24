@@ -5,7 +5,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
 public class DriverFactory {
-    private static WebDriver driver;
+
+    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     private DriverFactory() {
 
@@ -13,32 +14,34 @@ public class DriverFactory {
 
     public static WebDriver initializeDriver(String webDriver) {
 
-        if (driver == null) {
+        switch (webDriver) {
+            case "CHROME":
+                System.setProperty("webdriver.chrome.driver", "D:/DATA DWI/github project/sdet-java-testing/src/main/java/org/example/driver/chromedriver.exe");
+                driver.set(new ChromeDriver());
+                break;
 
-            switch (webDriver) {
-                case "CHROME":
-                    System.setProperty("webdriver.chrome.driver", "D:/DATA DWI/github project/sdet-java-testing/src/main/java/org/example/driver/chromedriver.exe");
-                    driver = new ChromeDriver();
-                    break;
+            case "EDGE":
+                System.setProperty("webdriver.edge.driver", "D:/DATA DWI/github project/sdet-java-testing/src/main/java/org/example/driver/msedgedriver.exe");
+                driver.set(new EdgeDriver());
+                break;
 
-                case "EDGE":
-                    System.setProperty("webdriver.edge.driver", "D:/DATA DWI/github project/sdet-java-testing/src/main/java/org/example/driver/msedgedriver.exe");
-                    driver = new EdgeDriver();
-                    break;
-
-                default:
-                    break;
-            }
+            default:
+                break;
         }
 
-        return driver;
+
+        return driver.get();
     }
 
     public static WebDriver getDriver() {
-        if (driver == null) {
-            driver = initializeDriver(ConfigFileReader.getInstance().getProperty("DRIVER"));
+        if (driver.get() == null) {
+            driver.set(initializeDriver(ConfigFileReader.getInstance().getProperty("DRIVER")));
         }
-        return driver;
+        return driver.get();
+    }
+
+    public static void cleanUpThreadLocal(){
+        driver.remove();
     }
 
 }

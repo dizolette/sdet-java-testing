@@ -18,7 +18,8 @@ public class BaseTest {
     @AfterTest
     public void closeDriver() {
         if (this.driver != null) {
-            this.driver.close();
+            DriverFactory.cleanUpThreadLocal();
+            this.driver.quit();
         }
     }
 }
