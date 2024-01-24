@@ -9,6 +9,10 @@ public class CheckoutSteps extends WebElementHelper {
         findElementById(CheckoutPage.btnCheckoutId).click();
     }
 
+    public void clickBtnContinue() {
+        findElementById(CheckoutPage.btnContinueId).click();
+    }
+
     public String getErrorTextFieldRequired() {
         return findELementByTagName(CheckoutPage.popUpErrorTagName).getText();
     }
