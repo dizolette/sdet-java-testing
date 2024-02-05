@@ -32,7 +32,7 @@ public class CheckoutWithEmptyDataTest extends BaseTest {
     }
 
     @Test
-    public void checkoutWithoutData() throws InterruptedException {
+    public void checkoutWithoutData() {
 
         driver.get(ConfigFileReader.getInstance().getProperty("BASE_URL"));
 

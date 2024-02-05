@@ -1,5 +1,6 @@
 package org.example.helper;
 
+import org.example.base.ConfigFileReader;
 import org.example.base.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +12,8 @@ import java.time.Duration;
 import java.util.List;
 
 public class WebElementHelper {
+
+    protected int defaultElementTimeout = Integer.parseInt(ConfigFileReader.getInstance().getProperty("DEFAULT_TIMEOUT_ELEMENT_IN_SECONDS"));
 
     WebDriver driver = DriverFactory.getDriver();
 

@@ -17,7 +17,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void testLogin() throws InterruptedException {
+    public void testLogin() {
         ConfigFileReader configFileReader = ConfigFileReader.getInstance();
 
         driver.get(configFileReader.getProperty("BASE_URL"));

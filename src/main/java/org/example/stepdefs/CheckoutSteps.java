@@ -2,18 +2,19 @@ package org.example.stepdefs;
 
 import org.example.helper.WebElementHelper;
 import org.example.pages.CheckoutPage;
+import org.openqa.selenium.By;
 
 public class CheckoutSteps extends WebElementHelper {
 
     public void clickBtnCheckout() {
-        findElementById(CheckoutPage.btnCheckoutId).click();
+        clickOn(By.id(CheckoutPage.btnCheckoutId), defaultElementTimeout);
     }
 
     public void clickBtnContinue() {
-        findElementById(CheckoutPage.btnContinueId).click();
+        clickOn(By.id(CheckoutPage.btnContinueId), defaultElementTimeout);
     }
 
     public String getErrorTextFieldRequired() {
-        return findELementByTagName(CheckoutPage.popUpErrorTagName).getText();
+        return waitPresenceOfElement(By.tagName(CheckoutPage.popUpErrorTagName), defaultElementTimeout).getText();
     }
 }
