@@ -25,14 +25,13 @@ public class NavigateToAboutTest extends BaseTest {
     }
 
     @Test
-    public void navigateToAboutTest() throws InterruptedException {
+    public void navigateToAboutTest() {
 
         driver.get(ConfigFileReader.getInstance().getProperty("BASE_URL"));
         LoginSteps loginSteps = new LoginSteps();
         loginSteps.login(ConfigFileReader.getInstance().getProperty("EMAIL"), ConfigFileReader.getInstance().getProperty("PASSWORD"));
 
         inventorySteps.clickBurgerMenu();
-        Thread.sleep(1000);
         inventorySteps.clickAboutSideBar();
 
         Assert.assertEquals(driver.getCurrentUrl(), "https://saucelabs.com/");

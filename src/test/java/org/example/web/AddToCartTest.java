@@ -29,7 +29,7 @@ public class AddToCartTest extends BaseTest {
     }
 
     @Test
-    public void addToCartAndRemoveItemTest() throws InterruptedException {
+    public void addToCartAndRemoveItemTest() {
         driver.get(ConfigFileReader.getInstance().getProperty("BASE_URL"));
 
         LoginSteps loginSteps = new LoginSteps();

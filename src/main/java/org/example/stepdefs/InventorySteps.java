@@ -2,24 +2,25 @@ package org.example.stepdefs;
 
 import org.example.helper.WebElementHelper;
 import org.example.pages.InventoryPage;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.By;
 
 public class InventorySteps extends WebElementHelper {
 
     public void addToCart(String... items) {
         for (String item : items) {
-            WebElement element = findElementById(item);
-            element.click();
+            clickOn(By.id(item), defaultElementTimeout);
         }
     }
 
     public void clickCart() {
-        findElementById(InventoryPage.btnCartId).click();
+        clickOn(By.id(InventoryPage.btnCartId), defaultElementTimeout);
     }
+
     public void clickBurgerMenu() {
-        findElementById(InventoryPage.btnBurgerMenuId).click();
+        clickOn(By.id(InventoryPage.btnBurgerMenuId), defaultElementTimeout);
     }
+
     public void clickAboutSideBar() {
-        findElementById(InventoryPage.btnSidebarAboutId).click();
+        clickOn(By.id(InventoryPage.btnSidebarAboutId), defaultElementTimeout);
     }
 }
