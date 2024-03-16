@@ -16,12 +16,12 @@ public class DriverFactory {
 
         switch (webDriver) {
             case "CHROME":
-                System.setProperty("webdriver.chrome.driver", "D:/DATA DWI/github project/sdet-java-testing/src/main/java/org/example/driver/chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/src/main/java/org/example/driver/chromedriver.exe");
                 driver.set(new ChromeDriver());
                 break;
 
             case "EDGE":
-                System.setProperty("webdriver.edge.driver", "D:/DATA DWI/github project/sdet-java-testing/src/main/java/org/example/driver/msedgedriver.exe");
+                System.setProperty("webdriver.edge.driver", System.getProperty("user.dir")+"/src/main/java/org/example/driver/msedgedriver.exe");
                 driver.set(new EdgeDriver());
                 break;
 
